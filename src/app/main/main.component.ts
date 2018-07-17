@@ -1,5 +1,6 @@
 import { QuestionService } from './../question.service';
 import { Component, OnInit } from '@angular/core';
+import { Question } from '../question';
 
 @Component({
   selector: 'app-main',
@@ -7,10 +8,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
-
-  constructor() { }
+  counter:number = 0;
+  currentQuestion;
+  constructor( private questionService: QuestionService) { }
 
   ngOnInit() {
+
+    this.currentQuestion = this.questionService.getQuestion(this.counter);
   }
 
 }

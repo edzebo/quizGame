@@ -1,20 +1,23 @@
 <mat-card class="custom-card">
     <mat-card-header>
-        <h1>Question 0</h1>
+        <h1>Question {{currentQuestion.id}}:</h1>
     </mat-card-header>
 
     <mat-card-content> 
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime provident nemo fuga quae praesentium, amet nobis ipsum ab temporibus aliquid?Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat dolorem vitae qui adipisci non porro! Maxime velit qui sint exercitationem.</p>
+        <p>
+            {{currentQuestion.question}}
+        </p>
+        
     </mat-card-content>
 
     <mat-card-actions>
        <div class="button-row">
-        <button mat-stroked-button>Basic</button>
-        <button mat-stroked-button>Basic</button>
+        <button mat-stroked-button>{{currentQuestion.answers[0]}}</button>
+        <button mat-stroked-button>{{currentQuestion.answers[1]}}</button>
     </div>
     <div class="button-row">
-        <button mat-stroked-button>Basic</button>
-        <button mat-stroked-button>Basic</button>
+        <button mat-stroked-button>{{currentQuestion.answers[2]}}</button>
+        <button mat-stroked-button>{{currentQuestion.answers[3]}}</button>
     </div> 
       </mat-card-actions>
     

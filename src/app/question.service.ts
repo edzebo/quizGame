@@ -12,4 +12,8 @@ export class QuestionService {
   constructor(private runingQuestion: Question) {
     this.runingQuestion = QUESTIONS[this.counter];
    }
+
+   getQuestion(param) {
+    return QUESTIONS[param];
+  }  
 }

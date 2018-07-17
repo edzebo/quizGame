@@ -8,6 +8,7 @@ import { HeaderComponent } from './header/header.component';
 import { MainComponent } from './main/main.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';
+import { Question } from './question';
 
 
 
@@ -24,7 +25,7 @@ import {MatButtonModule} from '@angular/material/button';
     MaterialModule,
     MatButtonModule
   ],
-  providers: [QuestionService],
+  providers: [QuestionService, Question],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
