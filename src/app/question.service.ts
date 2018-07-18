@@ -7,11 +7,9 @@ import { Question } from './question';
 })
 export class QuestionService {
 
-  counter: number = 0;
+  counter:number;
 
-  constructor(private runingQuestion: Question) {
-    this.runingQuestion = QUESTIONS[this.counter];
-   }
+  constructor(  ) { }
 
    getQuestion(param) {
     return QUESTIONS[param];

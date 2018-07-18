@@ -1,3 +1,4 @@
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { QuestionService } from './question.service';
 import { MaterialModule } from './material';
 import { BrowserModule } from '@angular/platform-browser';
@@ -9,6 +10,7 @@ import { MainComponent } from './main/main.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';
 import { Question } from './question';
+import { ResultsComponent } from './results/results.component';
 
 
 
@@ -17,13 +19,15 @@ import { Question } from './question';
   declarations: [
     AppComponent,
     HeaderComponent,
-    MainComponent
+    MainComponent,
+    ResultsComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     MaterialModule,
-    MatButtonModule
+    MatButtonModule,
+    FlexLayoutModule  
   ],
   providers: [QuestionService, Question],
   bootstrap: [AppComponent]
