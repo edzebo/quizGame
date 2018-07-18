@@ -4,7 +4,7 @@ import { ResultsComponent } from './../results/results.component';
 import { QuestionService } from './../question.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { MatDialog } from '../../../node_modules/@angular/material/dialog';
-import { ENGINE_METHOD_PKEY_ASN1_METHS } from 'constants';
+
 
 @Component({
   selector: 'app-main',
@@ -37,7 +37,7 @@ export class MainComponent implements OnInit {
   }
 
   userAnswer(event) {
-    if (this.counter < QUESTIONS.length) {  // I have one aditional click here. 
+    if (this.counter < QUESTIONS.length - 1) {  // I have one aditional click here. 
       if (event.srcElement.innerText == this.currentQuestion.correctAnswer) {
         this.cashAmount += this.currentQuestion.cashValue;
         this.counter++; 
