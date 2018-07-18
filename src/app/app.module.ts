@@ -3,7 +3,6 @@ import { QuestionService } from './question.service';
 import { MaterialModule } from './material';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { MainComponent } from './main/main.component';
@@ -11,6 +10,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';
 import { Question } from './question';
 import { ResultsComponent } from './results/results.component';
+import { FinalComponent } from './final/final.component';
 
 
 
@@ -20,7 +20,8 @@ import { ResultsComponent } from './results/results.component';
     AppComponent,
     HeaderComponent,
     MainComponent,
-    ResultsComponent
+    ResultsComponent,
+    FinalComponent
   ],
   imports: [
     BrowserModule,
@@ -30,6 +31,7 @@ import { ResultsComponent } from './results/results.component';
     FlexLayoutModule  
   ],
   providers: [QuestionService, Question],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ResultsComponent, FinalComponent]
 })
 export class AppModule { }

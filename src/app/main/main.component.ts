@@ -1,7 +1,10 @@
+import { FinalComponent } from './../final/final.component';
+import { QUESTIONS } from './../questions-mock';
+import { ResultsComponent } from './../results/results.component';
 import { QuestionService } from './../question.service';
-import { Component, OnInit } from '@angular/core';
-import { Question } from '../question';
-import { renderComponent } from '../../../node_modules/@angular/core/src/render3';
+import { Component, OnInit, Input } from '@angular/core';
+import { MatDialog } from '../../../node_modules/@angular/material/dialog';
+import { ENGINE_METHOD_PKEY_ASN1_METHS } from 'constants';
 
 @Component({
   selector: 'app-main',
@@ -9,38 +12,48 @@ import { renderComponent } from '../../../node_modules/@angular/core/src/render3
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
-  counter:number = 0;
+  counter: number = 0;
   currentQuestion;
   answerValue: string;
-  cashAmount:number = 0;
+  cashAmount: number = 0;
 
-  constructor( private questionService: QuestionService) { }
-
+  constructor(private questionService: QuestionService, public popup: MatDialog) { }
 
   ngOnInit() {
 
     this.currentQuestion = this.questionService.getQuestion(this.counter);
   }
   ngDoCheck() {
-
     this.currentQuestion = this.questionService.getQuestion(this.counter);
+
+  }
+  showResults() {
+    let dialogPopup = this.popup.open(FinalComponent, {
+      width: '400px',
+      data: {
+        cashAmount: this.cashAmount
+      }
+    })
   }
 
   userAnswer(event) {
-   if (event.srcElement.innerText == this.currentQuestion.correctAnswer) {
-    this.cashAmount += this.currentQuestion.cashValue;
-    this.counter++; //when it reaches end implement score.
+    if (this.counter < QUESTIONS.length) {  // I have one aditional click here. 
+      if (event.srcElement.innerText == this.currentQuestion.correctAnswer) {
+        this.cashAmount += this.currentQuestion.cashValue;
+        this.counter++; 
+      }
+      else {
+        let dialogPopup = this.popup.open(ResultsComponent, {
+          width: '500px'
+        })
+      }
+
     }
     else {
-      //navigate to end component. or popup and then to start page
-      
+      this.showResults();
     }
-   
-  
-  
-
-   
-
   }
-
 }
+
+
+

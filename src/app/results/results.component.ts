@@ -12,4 +12,9 @@ export class ResultsComponent implements OnInit {
   ngOnInit() {
   }
 
+
+  reloadPage() {
+    location.reload();
+  }
+
 }

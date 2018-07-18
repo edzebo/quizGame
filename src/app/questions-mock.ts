@@ -1,6 +1,6 @@
 import { Question } from './question';
 
-
+//List of mock questions. Later connection to database will be made
 export const QUESTIONS: Question[] = [
     {
         id:1,
