@@ -11,7 +11,7 @@ export class QuestionService {
 
   constructor(  ) { }
 
-   getQuestion(param) {
-    return QUESTIONS[param];
+   getQuestions() {
+    return QUESTIONS;
   }  
 }

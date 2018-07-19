@@ -1,7 +1,8 @@
+import { QuestionService } from './../question.service';
+import { Question } from './../question';
 import { FinalComponent } from '../final/final.component';
 import { QUESTIONS } from '../questions-mock';
 import { ResultsComponent } from '../results/results.component';
-import { QuestionService } from '../question.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
@@ -12,22 +13,21 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
-  counter: number = 0;
-  currentQuestion;
+  currentQuestionIndex: number = 0;
+  
   answerValue: string;
   cashAmount: number = 0;
 
-  constructor(private questionService: QuestionService, public popup: MatDialog) { }
-
+  constructor(private questionService: QuestionService, private popup: MatDialog) { }
+  
   ngOnInit() {
-
-    this.currentQuestion = this.questionService.getQuestion(this.counter);
+    
   }
-  ngDoCheck() {
-    this.currentQuestion = this.questionService.getQuestion(this.counter);  // moras izbaciti
 
-  }
-  showResults() {
+  myQuestions: Question[] = this.questionService.getQuestions();
+  currentQuestion: Question = this.myQuestions[this.currentQuestionIndex]
+  
+  private showResults() {
     let dialogPopup = this.popup.open(FinalComponent, {
       width: '400px',
       data: {
@@ -36,11 +36,12 @@ export class MainComponent implements OnInit {
     })
   }
 
-  userAnswer(event) {
-    if (this.counter < QUESTIONS.length - 1) {  // I have one aditional click here. 
-      if (event.srcElement.innerText == this.currentQuestion.correctAnswer) {
+  public userAnswer(event) {
+    if (this.currentQuestionIndex < QUESTIONS.length - 1) {  // I have one aditional click here. 
+      if (event.srcElement.innerText === this.currentQuestion.correctAnswer) {
         this.cashAmount += this.currentQuestion.cashValue;
-        this.counter++; 
+        this.currentQuestionIndex++; 
+        console.log("Html should change now")
       }
       else {
         let dialogPopup = this.popup.open(ResultsComponent, {
@@ -53,6 +54,7 @@ export class MainComponent implements OnInit {
       this.showResults();
     }
   }
+  
 }
 
 
