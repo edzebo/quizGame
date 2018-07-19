@@ -1,9 +1,9 @@
-import { FinalComponent } from './../final/final.component';
-import { QUESTIONS } from './../questions-mock';
-import { ResultsComponent } from './../results/results.component';
-import { QuestionService } from './../question.service';
+import { FinalComponent } from '../final/final.component';
+import { QUESTIONS } from '../questions-mock';
+import { ResultsComponent } from '../results/results.component';
+import { QuestionService } from '../question.service';
 import { Component, OnInit, Input } from '@angular/core';
-import { MatDialog } from '../../../node_modules/@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 
 
 @Component({
@@ -24,7 +24,7 @@ export class MainComponent implements OnInit {
     this.currentQuestion = this.questionService.getQuestion(this.counter);
   }
   ngDoCheck() {
-    this.currentQuestion = this.questionService.getQuestion(this.counter);
+    this.currentQuestion = this.questionService.getQuestion(this.counter);  // moras izbaciti
 
   }
   showResults() {

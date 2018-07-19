@@ -1,0 +1,16 @@
+.custom-card {
+    max-width: 1000px;
+    margin: auto;
+    margin-top: 100px;
+    padding-bottom: 50px;
+  }
+
+
+
+  .start-button {
+    width: 400px;
+    height: 60px;
+    margin: 0 30% !important;
+    max-width: 40%;
+  }
+
