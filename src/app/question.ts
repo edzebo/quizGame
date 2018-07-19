@@ -1,9 +1,6 @@
 export class Question {
-    id: number;
-    question: string;
-    answers: string[];
-    correctAnswer: string;
-    cashValue: number;
-
-    
+  id: number;
+  question: string;
+  answers: string[];
+  correctAnswer: string;
 }

@@ -21,6 +21,14 @@
   }
 
 
+  .true {
+    background-color: green!important;
+  }
+  .false {
+    background-color: red;
+  }
+
+
   
 
   

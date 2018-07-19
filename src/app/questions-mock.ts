@@ -3,62 +3,61 @@ import { Question } from './question';
 //List of mock questions. Later connection to database will be made
 export const QUESTIONS: Question[] = [
     {
-        id:1,
-        question:'Koliko je 0^12?', 
+        id: 1,
+        question: 'Koliko je 0^12?',
         answers: [
             '12',
             '0',
-            '1', 
+            '1',
             'Ne znam'
-            ], 
-        correctAnswer:'1', 
-        cashValue: 10
+        ],
+        correctAnswer: '1',
     },
     {
-        id:2 ,
-        question:'Koji je glavni grad Ugande?', 
+        id: 2,
+        question: 'Koji je glavni grad Ugande?',
         answers: [
             'Kampala',
             'Masaka',
             'Uganda',
             'Ne znam'
-            ], 
-        correctAnswer:'Kampala',
-        cashValue: 100
+        ],
+        correctAnswer: 'Kampala'
+
     },
     {
-        id:3 ,
-        question:'Sta je osnovna mjera za vrijeme?', 
+        id: 3,
+        question: 'Sta je osnovna mjera za vrijeme?',
         answers: [
             'Sekunda',
             'Minuta',
             'Sat',
             'Dan'
-            ], 
-        correctAnswer:'Sekunda',
-        cashValue: 300
+        ],
+        correctAnswer: 'Sekunda'
+
     },
     {
-        id:4 ,
-        question:'Ko je osnovao kompaniju General Motors?',
+        id: 4,
+        question: 'Ko je osnovao kompaniju General Motors?',
         answers: [
             'Henry Ford',
             'Abraham Lincoln',
-            'Luke Jr. Walton', 
+            'Luke Jr. Walton',
             'William C. Durant'
-            ], 
-        correctAnswer:'William C. Durant',
-        cashValue: 500
+        ],
+        correctAnswer: 'William C. Durant'
+
     },
     {
-        id:5 ,
-        question:'Jebemga ne znam sta da pitam. Tacan odgovor je Odgovor.', 
+        id: 5,
+        question: 'Jebemga ne znam sta da pitam. Tacan odgovor je Odgovor.',
         answers: [
             'Nije odgovor',
             'Nije odgovor',
             'Nije odgovor',
             'Odgovor'
         ],
-        correctAnswer:'Odgovor', 
-        cashValue: 500}
+        correctAnswer: 'Odgovor'
+    }
 ]

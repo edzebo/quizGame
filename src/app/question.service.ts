@@ -1,17 +1,37 @@
 import { QUESTIONS } from './questions-mock';
 import { Injectable } from '@angular/core';
-import { Question } from './question';
 
 @Injectable({
   providedIn: 'root'
 })
 export class QuestionService {
 
-  counter:number;
+  counter: number;
 
-  constructor(  ) { }
+  constructor() { }
 
-   getQuestions() {
-    return QUESTIONS;
-  }  
+  getQuestions() {
+    return this.shuffle(QUESTIONS);
+    console.log(QUESTIONS);
+  }
+
+
+  // Fisher-Yates (aka Knuth) Shuffle.
+  public shuffle(array) {
+    let currentIndex = array.length, temporaryValue, randomIndex;
+
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+
+      // Pick a remaining element...
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+
+      // And swap it with the current element.
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+      return array;
+    }
+  }
 }
