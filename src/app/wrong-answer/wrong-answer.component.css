@@ -1,0 +1,21 @@
+.button {
+    width: 400px;
+    height: 60px;
+    margin: 0 30% !important;
+    max-width: 40%;
+    font-size: 1.2em;
+  }
+
+
+
+.image {
+  float: right;
+  margin: 10%;
+  margin-top: 5%;
+  width: 200px;
+}
+
+.paragraph {
+  margin-top: 10%;
+  margin-left: 5%;
+}

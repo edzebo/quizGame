@@ -1,6 +1,7 @@
 import { QUESTIONS } from './questions-mock';
 import { Injectable } from '@angular/core';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -12,7 +13,6 @@ export class QuestionService {
 
   getQuestions() {
     return this.shuffle(QUESTIONS);
-    console.log(QUESTIONS);
   }
 
 

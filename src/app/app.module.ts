@@ -9,17 +9,18 @@ import { MainComponent } from './main/main.component';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { MatButtonModule} from '@angular/material/button';
 import { Question } from './question';
-import { ResultsComponent } from './results/results.component';
 import { FinalComponent } from './final/final.component';
 import { FirstPageComponent } from './first-page/first-page.component';
 import { RouterModule, Routes } from '@angular/router';
+import { WrongAnswerComponent } from './wrong-answer/wrong-answer.component';
+import { CorrectAnswerSnackbarComponent } from './correct-answer-snackbar/correct-answer-snackbar.component';
 
 
 const appRoutes: Routes = [
   {path: 'quiz', component: FirstPageComponent},
   {path: 'inprogress', component: MainComponent},
-  {path: '', redirectTo:'/quiz', pathMatch: 'full'}
-]
+  {path: '', redirectTo: '/quiz', pathMatch: 'full'}
+];
 
 
 
@@ -29,10 +30,9 @@ const appRoutes: Routes = [
     AppComponent,
     HeaderComponent,
     MainComponent,
-    ResultsComponent,
     FinalComponent,
     FirstPageComponent,
-    
+    WrongAnswerComponent
   ],
   imports: [
     BrowserModule,
@@ -44,6 +44,6 @@ const appRoutes: Routes = [
   ],
   providers: [QuestionService, Question],
   bootstrap: [AppComponent],
-  entryComponents: [ResultsComponent, FinalComponent]
+  entryComponents: [WrongAnswerComponent, FinalComponent]
 })
 export class AppModule { }
