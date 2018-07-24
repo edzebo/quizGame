@@ -13,7 +13,6 @@ import { FinalComponent } from './final/final.component';
 import { FirstPageComponent } from './first-page/first-page.component';
 import { RouterModule, Routes } from '@angular/router';
 import { WrongAnswerComponent } from './wrong-answer/wrong-answer.component';
-import { CorrectAnswerSnackbarComponent } from './correct-answer-snackbar/correct-answer-snackbar.component';
 
 
 const appRoutes: Routes = [

@@ -15,12 +15,12 @@
     <mat-card-actions>
         <div fxLayout="column" fxLayoutAlign="center" fxLayoutGap="5px">
        <div fxLayout="row" fxLayoutAlign="center" fxLayoutGap="5px">
-        <button mat-raised-button class="answer-button" (click)="userAnswer($event)"><b>{{currentQuestion.answers[0]}}</b></button>
-        <button mat-raised-button class="answer-button" (click)="userAnswer($event)"><b>{{currentQuestion.answers[1]}}</b></button>
+        <button mat-raised-button id="option1" class="answer-button" (click)="userAnswer($event)"><b>{{currentQuestion.answers[0]}}</b></button>
+        <button mat-raised-button id="option2" class="answer-button" (click)="userAnswer($event)"><b>{{currentQuestion.answers[1]}}</b></button>
     </div>
     <div fxLayout="row" fxLayoutAlign="center" fxLayoutGap="5px" >
-        <button mat-raised-button class="answer-button" (click)="userAnswer($event)"><b>{{currentQuestion.answers[2]}}</b></button>
-        <button mat-raised-button class="answer-button" (click)="userAnswer($event)"><b>{{currentQuestion.answers[3]}}</b></button>
+        <button mat-raised-button id="option3" class="answer-button" (click)="userAnswer($event)"><b>{{currentQuestion.answers[2]}}</b></button>
+        <button mat-raised-button id="option4" class="answer-button" (click)="userAnswer($event)"><b>{{currentQuestion.answers[3]}}</b></button>
     </div> 
         </div>
       </mat-card-actions>

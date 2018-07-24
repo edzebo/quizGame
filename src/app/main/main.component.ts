@@ -6,7 +6,6 @@ import { QUESTIONS } from '../questions-mock';
 import { Component, OnInit, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '../../../node_modules/@angular/material';
-import { CorrectAnswerSnackbarComponent } from '../correct-answer-snackbar/correct-answer-snackbar.component';
 
 @Component({
   selector: 'app-main',
@@ -14,64 +13,81 @@ import { CorrectAnswerSnackbarComponent } from '../correct-answer-snackbar/corre
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
+
   public currentQuestionIndex = 0;
   public answerValue: string;
   public cashAmount = 0;
   public isAnswerCorrect: boolean;
+
   private myQuestions = this.questionService.getQuestions();
-  public currentQuestion: Question = this.questionService.shuffle(this.myQuestions)[
-    this.currentQuestionIndex
-  ];
+  public currentQuestion: Question = this.questionService.shuffle(this.myQuestions)[this.currentQuestionIndex];
+  public element;
+  public correctAnswerID;
   constructor(
     private questionService: QuestionService,
     private popup: MatDialog,
-    public snackBar: MatSnackBar
+    private snackBar: MatSnackBar
   ) { }
 
   ngOnInit() { }
 
-  private showResults() {
-    const dialogPopup = this.popup.open(FinalComponent, {
+  public userAnswer(event) {
+    this.isAnswerCorrect = event.srcElement.innerText === this.currentQuestion.correctAnswer;
+
+    if (this.currentQuestionIndex < this.myQuestions.length) {
+      // I have one aditional click here.
+      if (this.isAnswerCorrect) {
+        this.callCorrectAnswer(event);
+      } else {
+        this.callWrongAnswer(event);
+      }
+    } else {
+      if (this.isAnswerCorrect) {
+        event.srcElement.classList += ' true';
+        this.showResults();
+      } else {
+        // event.srcElement.classList += ' true';
+        this.callWrongAnswer(event);
+      }
+    }
+  }
+
+  private callCorrectAnswer(event) {
+    this.openSnackbar();
+    event.srcElement.classList += ' true';
+    this.cashAmount += (this.currentQuestionIndex + 1) * 50;
+    this.currentQuestionIndex++;
+    setTimeout(() => {
+      this.currentQuestion = this.myQuestions[this.currentQuestionIndex];
+      event.srcElement.classList += ' default';
+    }, 500);
+  }
+
+  private callWrongAnswer(event) {
+    event.srcElement.classList += ' false';
+    setTimeout(() => {
+      this.popup.open(WrongAnswerComponent, {
+        width: '600px'
+      });
+    }, 500);
+  }
+
+
+  public showResults() {
+    this.popup.open(FinalComponent, {
       width: '600px',
       data: {
         cashAmount: this.cashAmount
       }
     });
   }
-
-  public userAnswer(event) {
-    this.isAnswerCorrect =
-      event.srcElement.innerText === this.currentQuestion.correctAnswer;
-
-    if (this.currentQuestionIndex < QUESTIONS.length - 1) {
-      // I have one aditional click here.
-      if (this.isAnswerCorrect) {
-        // this.openSnackbar();
-        event.srcElement.classList += ' true';
-        this.cashAmount += (this.currentQuestionIndex + 1) * 50;
-        this.currentQuestionIndex++;
-        setTimeout(() => {
-          this.currentQuestion = this.myQuestions[this.currentQuestionIndex];
-          event.srcElement.classList += ' default';
-          console.log('Html should change now'); // provjera
-        }, 500);
-      } else {
-        setTimeout(() => {
-          // Popup nakon 500ms
-          const dialogPopup = this.popup.open(WrongAnswerComponent, {
-            width: '600px'
-          });
-        }, 500);
-        event.srcElement.classList += ' false'; // Bolji nacin za dodat klasu dugmetu?
-      }
-    } else {
-      this.showResults();
-    }
-  }
-
-  openSnackbar() {
-    this.snackBar.openFromComponent(CorrectAnswerSnackbarComponent, {
-      duration: 500,
+  public openSnackbar() {
+    this.snackBar.open('Tacan odgovor!', '', {
+      duration: 300
     });
   }
 }
+
+
+
+
