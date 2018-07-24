@@ -2,7 +2,6 @@ import { WrongAnswerComponent } from './../wrong-answer/wrong-answer.component';
 import { QuestionService } from './../question.service';
 import { Question } from './../question';
 import { FinalComponent } from '../final/final.component';
-import { QUESTIONS } from '../questions-mock';
 import { Component, OnInit, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '../../../node_modules/@angular/material';
@@ -19,7 +18,7 @@ export class MainComponent implements OnInit {
   public cashAmount = 0;
   public isAnswerCorrect: boolean;
 
-  private myQuestions = this.questionService.getQuestions();
+  public myQuestions = this.questionService.getQuestions();
   public currentQuestion: Question = this.questionService.shuffle(this.myQuestions)[this.currentQuestionIndex];
   public element;
   public correctAnswerID;

@@ -1,0 +1,18 @@
+import { QUESTIONS } from './../questions-mock';
+import { Component, OnInit } from '@angular/core';
+import { Question } from '../question';
+
+@Component({
+  selector: 'app-edit',
+  templateUrl: './edit.component.html',
+  styleUrls: ['./edit.component.css']
+})
+export class EditComponent implements OnInit {
+
+  constructor() { }
+  public myQuestions: Question[] = QUESTIONS;
+
+  ngOnInit() {
+  }
+
+}

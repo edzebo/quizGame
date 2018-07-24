@@ -6,19 +6,22 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { MainComponent } from './main/main.component';
-import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { MatButtonModule} from '@angular/material/button';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule } from '@angular/material/button';
 import { Question } from './question';
 import { FinalComponent } from './final/final.component';
 import { FirstPageComponent } from './first-page/first-page.component';
 import { RouterModule, Routes } from '@angular/router';
 import { WrongAnswerComponent } from './wrong-answer/wrong-answer.component';
+import { EditComponent } from './edit/edit.component';
+import { MatFormFieldModule, MatFormField, MatInputModule } from '../../node_modules/@angular/material';
 
 
 const appRoutes: Routes = [
-  {path: 'quiz', component: FirstPageComponent},
-  {path: 'inprogress', component: MainComponent},
-  {path: '', redirectTo: '/quiz', pathMatch: 'full'}
+  { path: 'quiz', component: FirstPageComponent },
+  { path: 'inprogress', component: MainComponent },
+  { path: 'edit', component: EditComponent },
+  { path: '', redirectTo: '/quiz', pathMatch: 'full' }
 ];
 
 
@@ -31,7 +34,8 @@ const appRoutes: Routes = [
     MainComponent,
     FinalComponent,
     FirstPageComponent,
-    WrongAnswerComponent
+    WrongAnswerComponent,
+    EditComponent
   ],
   imports: [
     BrowserModule,
@@ -39,6 +43,8 @@ const appRoutes: Routes = [
     MaterialModule,
     MatButtonModule,
     FlexLayoutModule,
+    MatInputModule,
+    MatFormFieldModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [QuestionService, Question],
