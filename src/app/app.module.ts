@@ -15,6 +15,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { WrongAnswerComponent } from './wrong-answer/wrong-answer.component';
 import { EditComponent } from './edit/edit.component';
 import { MatFormFieldModule, MatFormField, MatInputModule } from '../../node_modules/@angular/material';
+import { FormsModule } from '../../node_modules/@angular/forms';
 
 
 const appRoutes: Routes = [
@@ -45,7 +46,8 @@ const appRoutes: Routes = [
     FlexLayoutModule,
     MatInputModule,
     MatFormFieldModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    FormsModule
   ],
   providers: [QuestionService, Question],
   bootstrap: [AppComponent],

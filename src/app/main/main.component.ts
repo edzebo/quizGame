@@ -28,12 +28,13 @@ export class MainComponent implements OnInit {
     private snackBar: MatSnackBar
   ) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+  }
 
   public userAnswer(event) {
     this.isAnswerCorrect = event.srcElement.innerText === this.currentQuestion.correctAnswer;
 
-    if (this.currentQuestionIndex < this.myQuestions.length) {
+    if (this.currentQuestionIndex < this.myQuestions.length - 1) {
       // I have one aditional click here.
       if (this.isAnswerCorrect) {
         this.callCorrectAnswer(event);
@@ -52,6 +53,7 @@ export class MainComponent implements OnInit {
   }
 
   private callCorrectAnswer(event) {
+    console.log(event);
     this.openSnackbar();
     event.srcElement.classList += ' true';
     this.cashAmount += (this.currentQuestionIndex + 1) * 50;

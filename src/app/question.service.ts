@@ -2,19 +2,25 @@ import { QUESTIONS } from './questions-mock';
 import { Injectable } from '@angular/core';
 
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class QuestionService {
-
-  counter: number;
-
   constructor() { }
 
-  getQuestions() {
+  public getQuestions() {
     return this.shuffle(QUESTIONS);
   }
 
+  public createQuestion(quest, ans1, ans2, ans3, ans4, corAns) {
+    const q = {
+      question: quest,
+      answers: [ans1, ans2, ans3, ans4],
+      correctAnswer: corAns
+    };
+    QUESTIONS.push(q);
+  }
 
   // Fisher-Yates (aka Knuth) Shuffle.
   public shuffle(array) {
