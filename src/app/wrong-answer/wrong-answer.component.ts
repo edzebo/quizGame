@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialogRef } from '../../../node_modules/@angular/material/dialog';
+import { FinalComponent } from '../final/final.component';
 
 @Component({
   selector: 'app-results',
@@ -7,14 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WrongAnswerComponent implements OnInit {
 
-  constructor() { }
+  constructor(private matDialogRef: MatDialogRef<FinalComponent>) { }
 
   ngOnInit() {
   }
 
-
-  reloadPage() {
-    location.reload();
+  onClick() {
+    this.matDialogRef.close();
   }
-
 }

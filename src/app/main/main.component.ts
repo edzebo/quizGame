@@ -2,7 +2,7 @@ import { WrongAnswerComponent } from './../wrong-answer/wrong-answer.component';
 import { QuestionService } from './../question.service';
 import { Question } from './../question';
 import { FinalComponent } from '../final/final.component';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '../../../node_modules/@angular/material';
 
@@ -12,26 +12,25 @@ import { MatSnackBar } from '../../../node_modules/@angular/material';
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
-
   public currentQuestionIndex = 0;
   public answerValue: string;
   public cashAmount = 0;
   public isAnswerCorrect: boolean;
   public myQuestions = this.questionService.getQuestions();
-  public currentQuestion: Question = this.questionService.shuffle(this.myQuestions)[this.currentQuestionIndex];
+  public currentQuestion: Question = this.myQuestions[this.currentQuestionIndex];
   public element;
   public correctAnswerID;
   constructor(
     private questionService: QuestionService,
     private popup: MatDialog,
     private snackBar: MatSnackBar
-  ) { }
+  ) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   public userAnswer(event) {
-    this.isAnswerCorrect = event.srcElement.innerText === this.currentQuestion.correctAnswer;
+    this.isAnswerCorrect =
+      event.srcElement.innerText === this.currentQuestion.correctAnswer;
     if (this.currentQuestionIndex < this.myQuestions.length - 1) {
       // I have one aditional click here.
       if (this.isAnswerCorrect) {
@@ -41,10 +40,9 @@ export class MainComponent implements OnInit {
       }
     } else {
       if (this.isAnswerCorrect) {
-        event.srcElement.classList += ' true';
+        event.target.classList.add('true');
         this.showResults();
       } else {
-        // event.srcElement.classList += ' true';
         this.callWrongAnswer(event);
       }
     }
@@ -59,7 +57,6 @@ export class MainComponent implements OnInit {
     setTimeout(() => {
       this.currentQuestion = this.myQuestions[this.currentQuestionIndex];
       event.target.classList.remove('true');
-
     }, 500);
   }
 
@@ -72,7 +69,6 @@ export class MainComponent implements OnInit {
       });
     }, 500);
   }
-
 
   public showResults() {
     this.popup.open(FinalComponent, {
@@ -88,7 +84,3 @@ export class MainComponent implements OnInit {
     });
   }
 }
-
-
-
-

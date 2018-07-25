@@ -15,8 +15,8 @@ export class FinalComponent implements OnInit {
     this.cashAmount = this.data.cashAmount;
 
   }
-  reloadPage() {
-    location.reload();
+  public onClick() {
+    this.matDialogRef.close();
   }
 
 }

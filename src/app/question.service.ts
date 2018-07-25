@@ -13,15 +13,6 @@ export class QuestionService {
     return this.shuffle(QUESTIONS);
   }
 
-  public createQuestion(quest, ans1, ans2, ans3, ans4, corAns) {
-    const q = {
-      question: quest,
-      answers: [ans1, ans2, ans3, ans4],
-      correctAnswer: corAns
-    };
-    QUESTIONS.push(q);
-  }
-
   // Fisher-Yates (aka Knuth) Shuffle.
   public shuffle(array) {
     let currentIndex = array.length, temporaryValue, randomIndex;
