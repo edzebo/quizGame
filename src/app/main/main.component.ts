@@ -17,7 +17,6 @@ export class MainComponent implements OnInit {
   public answerValue: string;
   public cashAmount = 0;
   public isAnswerCorrect: boolean;
-
   public myQuestions = this.questionService.getQuestions();
   public currentQuestion: Question = this.questionService.shuffle(this.myQuestions)[this.currentQuestionIndex];
   public element;
@@ -33,7 +32,6 @@ export class MainComponent implements OnInit {
 
   public userAnswer(event) {
     this.isAnswerCorrect = event.srcElement.innerText === this.currentQuestion.correctAnswer;
-
     if (this.currentQuestionIndex < this.myQuestions.length - 1) {
       // I have one aditional click here.
       if (this.isAnswerCorrect) {
@@ -55,18 +53,20 @@ export class MainComponent implements OnInit {
   private callCorrectAnswer(event) {
     console.log(event);
     this.openSnackbar();
-    event.srcElement.classList += ' true';
+    event.target.classList.add('true');
     this.cashAmount += (this.currentQuestionIndex + 1) * 50;
     this.currentQuestionIndex++;
     setTimeout(() => {
       this.currentQuestion = this.myQuestions[this.currentQuestionIndex];
-      event.srcElement.classList += ' default';
+      event.target.classList.remove('true');
+
     }, 500);
   }
 
   private callWrongAnswer(event) {
-    event.srcElement.classList += ' false';
+    event.target.classList.add('false');
     setTimeout(() => {
+      event.target.classList.remove('false');
       this.popup.open(WrongAnswerComponent, {
         width: '600px'
       });
