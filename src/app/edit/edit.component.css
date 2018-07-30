@@ -48,3 +48,20 @@ form {
 .custom-width-answer {
   width: 45%;
 }
+
+
+fieldset {
+  margin: 0px;
+  border: none;
+  padding: 0px;
+}
+
+:disabled {
+  color: black;
+}
+
+.mat-card-actions .mat-raised-button:first-child {
+  margin-left: 6%;
+  margin-right: 10px;
+  margin-bottom: 25px;
+}

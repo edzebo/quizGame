@@ -1,3 +1,4 @@
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { QuestionService } from './../question.service';
 import { Component, OnInit } from '@angular/core';
 import { Question } from '../question';
@@ -10,38 +11,36 @@ import { Question } from '../question';
 export class EditComponent implements OnInit {
 
   public myQuestions: Question[] = this.questionService.getQuestions();
-  public tempQuestion = '';
-  public tempAns1 = '';
-  public tempAns2 = '';
-  public tempAns3 = '';
-  public tempAns4 = '';
-  public tempCorAns = '';
+  public tempQuestion = new Question('', '', '', '', '', '');
   public editState = false;
   public questionToEdit: Question;
 
-  constructor(private questionService: QuestionService) { }
+  constructor(private questionService: QuestionService, private snackBar: MatSnackBar) { }
 
 
 
 
   public onSubmit() {
     // tslint:disable-next-line:max-line-length
-    if (this.tempQuestion !== '' && this.tempAns1 !== '' && this.tempAns2 !== '' && this.tempAns3 !== '' && this.tempAns4 !== '' && this.tempCorAns !== '') {
-      const q = new Question(this.tempQuestion, this.tempAns1, this.tempAns2, this.tempAns3, this.tempAns4, this.tempCorAns);
-      this.myQuestions.push(q);
-      console.log('pushed to myQuestions');
+    if (this.validateQuestion(this.tempQuestion)) {
+      this.myQuestions.push(this.tempQuestion);
+      this.snackBar.open('Pitanje je dodano u bazu!', '', {
+        duration: 400
+      });
     } else {
-      console.log('Prazno polje');
+      this.snackBar.open('Jedan od ponudjenih odgovora mora biti tacan!!!', '', {
+        duration: 400
+      });
     }
   }
 
   public changeEditState(event, question) {
-    this.editState = !this.editState;
+    this.editState = true;
     this.questionToEdit = question;
   }
 
 
-  public deleteQuestion($event, question) {
+  public deleteQuestion(question) {
     let index: number;
     for (let i = 0; i < this.myQuestions.length; i++) {
       if (this.myQuestions[i].question === question.question) {
@@ -49,6 +48,15 @@ export class EditComponent implements OnInit {
       }
     }
     this.myQuestions.splice(index, 1);
+  }
+
+  public validateQuestion(question: Question): boolean {
+    for (let i = 0; i < 4; i++) {
+      if (question.answers[i] === question.correctAnswer) {
+        return true;
+      }
+    }
+    return false;
   }
 
   ngOnInit() {
