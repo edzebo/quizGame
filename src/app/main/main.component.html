@@ -1,35 +1,37 @@
 <mat-card class="custom-card">
     <mat-card-header>
-            
         <h1>Pitanje {{currentQuestionIndex + 1}}:</h1>
-        
     </mat-card-header>
-
-    <mat-card-content> 
+    <mat-card-content>
         <h2>
             {{currentQuestion.question}}
         </h2>
-        
     </mat-card-content>
-
     <mat-card-actions>
         <div fxLayout="column" fxLayoutAlign="center" fxLayoutGap="5px">
-       <div fxLayout="row" fxLayoutAlign="center" fxLayoutGap="5px">
-        <button id="button1" mat-raised-button id="option1" class="answer-button" (click)="userAnswer($event)"><b>{{currentQuestion.answers[0]}}</b></button>
-        <button id="button2" mat-raised-button id="option2" class="answer-button" (click)="userAnswer($event)"><b>{{currentQuestion.answers[1]}}</b></button>
-    </div>
-    <div fxLayout="row" fxLayoutAlign="center" fxLayoutGap="5px" >
-        <button id="button3" mat-raised-button id="option3" class="answer-button" (click)="userAnswer($event)"><b>{{currentQuestion.answers[2]}}</b></button>
-        <button id="button4" mat-raised-button id="option4" class="answer-button" (click)="userAnswer($event)"><b>{{currentQuestion.answers[3]}}</b></button>
-    </div> 
+            <div fxLayout="row" fxLayoutAlign="center" fxLayoutGap="5px">
+                <button id="button1" mat-raised-button id="option1" class="answer-button" (click)="userAnswer($event)">
+                    <b>{{currentQuestion.answers[0]}}</b>
+                </button>
+                <button id="button2" mat-raised-button id="option2" class="answer-button" (click)="userAnswer($event)">
+                    <b>{{currentQuestion.answers[1]}}</b>
+                </button>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="center" fxLayoutGap="5px">
+                <button id="button3" mat-raised-button id="option3" class="answer-button" (click)="userAnswer($event)">
+                    <b>{{currentQuestion.answers[2]}}</b>
+                </button>
+                <button id="button4" mat-raised-button id="option4" class="answer-button" (click)="userAnswer($event)">
+                    <b>{{currentQuestion.answers[3]}}</b>
+                </button>
+            </div>
         </div>
-      </mat-card-actions>
-      
-      <div class>
-        <button mat-button><b>Trenutno osvojeno: {{cashAmount}} KM!</b></button>  
-        <button mat-raised-button class="right" (click)="showResults()"><i class="material-icons">attach_money</i>Cash me out!</button>
+    </mat-card-actions>
+    <div class>
+        <button mat-button>
+            <b>Trenutno osvojeno: {{cashAmount}} KM!</b>
+        </button>
+        <button mat-raised-button class="right" (click)="showResults()">
+            <i class="material-icons">attach_money</i>Cash me out!</button>
     </div>
-    
-      
 </mat-card>
-

@@ -17,19 +17,15 @@ export class EditComponent implements OnInit {
 
   constructor(private questionService: QuestionService, private snackBar: MatSnackBar) { }
 
-
-
-
   public onSubmit() {
-    // tslint:disable-next-line:max-line-length
     if (this.validateQuestion(this.tempQuestion)) {
       this.myQuestions.push(this.tempQuestion);
       this.snackBar.open('Pitanje je dodano u bazu!', '', {
-        duration: 400
+        duration: 800
       });
     } else {
-      this.snackBar.open('Jedan od ponudjenih odgovora mora biti tacan!!!', '', {
-        duration: 400
+      this.snackBar.open('Svi ponudeni odgovori moraju biti razliciti i jedan od odgovora mora biti tacan.!!!', '', {
+        duration: 1500
       });
     }
   }
@@ -38,7 +34,6 @@ export class EditComponent implements OnInit {
     this.editState = true;
     this.questionToEdit = question;
   }
-
 
   public deleteQuestion(question) {
     let index: number;
@@ -52,6 +47,13 @@ export class EditComponent implements OnInit {
 
   public validateQuestion(question: Question): boolean {
     for (let i = 0; i < 4; i++) {
+      for (let j = 0; j < 4 - i; j++) {
+        if (question.answers[i] === question.answers[j]) {
+          return false;
+        }
+      }
+    }
+    for (let i = 0; i < 4; i++) {
       if (question.answers[i] === question.correctAnswer) {
         return true;
       }
@@ -61,5 +63,4 @@ export class EditComponent implements OnInit {
 
   ngOnInit() {
   }
-
 }

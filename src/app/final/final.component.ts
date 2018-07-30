@@ -13,10 +13,8 @@ export class FinalComponent implements OnInit {
 
   ngOnInit() {
     this.cashAmount = this.data.cashAmount;
-
   }
   public onClick() {
     this.matDialogRef.close();
   }
-
 }

@@ -1,5 +1,5 @@
 <mat-card class="custom-card">
-  <button class="custom" mat-raised-button routerLink="/quiz">Done</button>
+  <button class="custom" mat-raised-button routerLink="/quiz">Back to Quiz</button>
   <mat-tab-group mat-stretch-tabs>
     <mat-tab label="Edit questions">
       <ul *ngFor="let question of myQuestions; let i = index">
@@ -8,8 +8,8 @@
             <div class="flex-container">
               <div class="question-container">
                 <div>
-                {{question.question}}
-              </div>
+                  {{question.question}}
+                </div>
               </div>
               <div class="button-container">
                 <button style="width: 110px;" class="custom-button" mat-raised-button color="primary" (click)="changeEditState($event, question)">
@@ -51,10 +51,10 @@
                     <input type="text" required matInput placeholder="Tacan odgovor:" [(ngModel)]="question.correctAnswer" name='tempCorAns'>
                   </mat-form-field>
                 </div>
-                <button style="width: 110px;" mat-raised-button color="warn" (click)="this.editState=false">
-                    <i class="material-icons">
-                      delete_forever
-                    </i> SAVE</button>
+                <button style="width: 110px; background-color: #1cd80f" mat-raised-button color="accent" (click)="this.editState=false">
+                  <i class="material-icons">
+                    done
+                  </i> SAVE</button>
               </form>
             </div>
           </mat-card-content>

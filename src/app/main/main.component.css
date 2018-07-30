@@ -5,7 +5,6 @@
     font-size: 1.3em;
     
   }
-
   .custom-card {
     max-width: 1000px;
     margin: auto;
@@ -13,16 +12,12 @@
     padding-bottom: 50px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   }
-
   .mat-card-content {
     margin-bottom: 50px;
   }
-
   .right {
       float: right;
   }
-
-
   .true {
     background-color: green;
   }

@@ -5,68 +5,51 @@
     padding-bottom: 50px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   }
-
   .example-container {
     display: flex;
     flex-direction: column;
   }
-  
   .example-container > * {
     width: 95%;
   }
-
   div > * {
     margin: 0 20px;
   }
-
-
 .custom {
   font-size: 1.5em;
   width: 100%;
   margin: auto;
   margin-top: 25px;
   margin-bottom: 50px; 
-  
 }
-
 .submit-button {
   float: right;
   margin: 25px;
   margin-right: 50px;
   margin-bottom: 30px!important;
   width: 200px;
-
 }
-
 form {
   margin: 50px;
 }
-
 .custom-width {
   width: 94%;
 }
 .custom-width-answer {
   width: 45%;
 }
-
-
 fieldset {
   margin: 0px;
   border: none;
   padding: 0px;
 }
-
 :disabled {
   color: black;
 }
-
-
-
 .flex-container {
   display: flex;
   flex-flow: wrap;
 }
-
 .question-container {
   flex: 5;
 }

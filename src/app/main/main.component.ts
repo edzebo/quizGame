@@ -13,26 +13,23 @@ import { MatSnackBar } from '../../../node_modules/@angular/material';
 })
 export class MainComponent implements OnInit {
   public currentQuestionIndex = 0;
-  public answerValue: string;
   public cashAmount = 0;
   public isAnswerCorrect: boolean;
   public myQuestions = this.questionService.getQuestions();
   public currentQuestion: Question = this.myQuestions[this.currentQuestionIndex];
-  public element;
-  public correctAnswerID;
+
   constructor(
     private questionService: QuestionService,
     private popup: MatDialog,
     private snackBar: MatSnackBar
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   public userAnswer(event) {
     this.isAnswerCorrect =
       event.srcElement.innerText === this.currentQuestion.correctAnswer;
     if (this.currentQuestionIndex < this.myQuestions.length - 1) {
-      // I have one aditional click here.
       if (this.isAnswerCorrect) {
         this.callCorrectAnswer(event);
       } else {
