@@ -4,16 +4,24 @@
     <mat-tab label="Edit questions">
       <ul *ngFor="let question of myQuestions; let i = index">
         <mat-card>
-          <mat-card-actions>
-              <button class="custom-button" mat-raised-button color="primary" (click)="changeEditState($event, question)"><i class="material-icons">
-                  edit
-                  </i>UPDATE</button>
-              <button mat-raised-button color="warn" (click)="deleteQuestion(question)"><i class="material-icons">
-                  delete_forever
-                  </i> DELETE</button>
-          </mat-card-actions>
-
           <mat-card-content>
+            <div class="flex-container">
+              <div class="question-container">
+                <div>
+                {{question.question}}
+              </div>
+              </div>
+              <div class="button-container">
+                <button style="width: 110px;" class="custom-button" mat-raised-button color="primary" (click)="changeEditState($event, question)">
+                  <i class="material-icons">
+                    edit
+                  </i>EDIT</button>
+                <button style="width: 110px;" mat-raised-button color="warn" (click)="deleteQuestion(question)">
+                  <i class="material-icons">
+                    delete_forever
+                  </i> DELETE</button>
+              </div>
+            </div>
             <!-- Forma za editovanje, *ngIf-->
             <div *ngIf="editState && questionToEdit.question == question.question">
               <form>
@@ -43,43 +51,11 @@
                     <input type="text" required matInput placeholder="Tacan odgovor:" [(ngModel)]="question.correctAnswer" name='tempCorAns'>
                   </mat-form-field>
                 </div>
+                <button style="width: 110px;" mat-raised-button color="warn" (click)="this.editState=false">
+                    <i class="material-icons">
+                      delete_forever
+                    </i> SAVE</button>
               </form>
-
-
-
-            </div>
-            <div>
-              {{question.question}}
-              <!-- <form disabled>
-                  <fieldset disabled>
-                <div>
-                  <mat-form-field class="custom-width">
-                    <input matInput placeholder="Pitanje:" [(ngModel)]="question.question" name='tempQuestion'>
-                  </mat-form-field>
-                </div>
-                <div>
-                  <mat-form-field class="custom-width-answer">
-                    <input matInput placeholder="Odgovor 1:" [(ngModel)]="question.answers[0]" name='tempAns1'>
-                  </mat-form-field>
-                  <mat-form-field class="custom-width-answer">
-                    <input matInput placeholder="Odgovor 2:" [(ngModel)]="question.answers[1]" name='tempAns2'>
-                  </mat-form-field>
-                </div>
-                <div>
-                  <mat-form-field class="custom-width-answer">
-                    <input matInput placeholder="Odgovor 3:" [(ngModel)]="question.answers[2]" name='tempAns3'>
-                  </mat-form-field>
-                  <mat-form-field class="custom-width-answer">
-                    <input matInput placeholder="Odgovor 4:" [(ngModel)]="question.answers[3]" name='tempAns4'>
-                  </mat-form-field>
-                </div>
-                <div>
-                  <mat-form-field class="custom-width">
-                    <input matInput placeholder="Tacan odgovor:" [(ngModel)]="question.correctAnswer" name='tempCorAns'>
-                  </mat-form-field>
-                </div>
-                </fieldset>
-              </form> -->
             </div>
           </mat-card-content>
         </mat-card>
@@ -115,9 +91,9 @@
           </mat-form-field>
         </div>
         <br>
-        <div *ngIf="Form.invalid && Form.touched"style="color:#BBBBBB">* - all fields are required</div>
+        <div *ngIf="Form.invalid && Form.touched" style="color:#BBBBBB">* - all fields are required</div>
       </form>
-      
+
       <div>
         <button mat-raised-button (click)="onSubmit()" class="submit-button" [disabled]="Form.invalid">Add question</button>
       </div>

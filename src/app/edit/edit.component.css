@@ -60,8 +60,16 @@ fieldset {
   color: black;
 }
 
-.mat-card-actions .mat-raised-button:first-child {
-  margin-left: 6%;
-  margin-right: 10px;
-  margin-bottom: 25px;
+
+
+.flex-container {
+  display: flex;
+  flex-flow: wrap;
+}
+
+.question-container {
+  flex: 5;
+}
+.button-container {
+  flex: 3;
 }
