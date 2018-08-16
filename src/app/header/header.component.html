@@ -4,5 +4,15 @@
       <span class="spacer"></span>
       <span class="header">Suljo Quiz App</span>
       <span class="spacer"></span>
+      <span id='logout'>
+          <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="logout" routerLink="/login">Logout</button>
+          </mat-menu>
+      </span>
     </mat-toolbar-row>
   </mat-toolbar>
+
+
+
+  

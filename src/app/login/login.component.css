@@ -1,0 +1,50 @@
+.custom-card {
+  max-width: 1000px;
+  margin: auto;
+  margin-top: 100px;
+  padding-bottom: 50px;
+}
+
+.start-button {
+  width: 100%;
+  height: 60px;
+  max-width: 40%;
+  font-size: 1.2em;
+}
+
+.start-button:hover {
+  color: indigo;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.container {
+  max-width: 500px;
+  width: 80%;
+  display: flex;
+  margin: auto;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  flex-basis: 250px;
+}
+
+#big {
+  width: 100%;
+  height: 50px;
+  font-size: 1.3em;
+  margin: none;
+  margin-top: 25px;
+}
+
+#big:hover {
+  color: indigo;
+  box-shadow: 10px 8px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.form-field {
+  width: 100%;
+}
+.form {
+  width: 100%;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}

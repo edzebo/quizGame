@@ -47,12 +47,17 @@ export class EditComponent implements OnInit {
 
   public validateQuestion(question: Question): boolean {
     for (let i = 0; i < 4; i++) {
+      let hit = 0;
       for (let j = 0; j < 4 - i; j++) {
         if (question.answers[i] === question.answers[j]) {
+          hit++;
+        }
+        if (hit > 1) {
           return false;
         }
       }
     }
+
     for (let i = 0; i < 4; i++) {
       if (question.answers[i] === question.correctAnswer) {
         return true;
@@ -61,6 +66,5 @@ export class EditComponent implements OnInit {
     return false;
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 }

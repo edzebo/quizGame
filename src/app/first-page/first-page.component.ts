@@ -1,4 +1,6 @@
+import { UserService } from './../user.service';
 import { Component, OnInit } from '@angular/core';
+import { User } from '../shared/user';
 
 @Component({
   selector: 'app-first-page',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FirstPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private userServie: UserService) { }
+
+  private user: User = this.userServie.user;
 
   ngOnInit() {
+    const el = document.getElementById('logout');
+    // tslint:disable-next-line:quotemark
+    el.classList.remove("hide");
   }
 
 }

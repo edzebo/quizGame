@@ -1,3 +1,4 @@
+import { AuthGuard } from './auth.guard';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { QuestionService } from './question.service';
 import { MaterialModule } from './material';
@@ -14,19 +15,18 @@ import { FirstPageComponent } from './first-page/first-page.component';
 import { RouterModule, Routes } from '@angular/router';
 import { WrongAnswerComponent } from './wrong-answer/wrong-answer.component';
 import { EditComponent } from './edit/edit.component';
-import { MatFormFieldModule, MatFormField, MatInputModule } from '../../node_modules/@angular/material';
-import { FormsModule } from '../../node_modules/@angular/forms';
+import { MatFormFieldModule, MatFormField, MatInputModule, MatMenuModule } from '../../node_modules/@angular/material';
+import { FormsModule, ReactiveFormsModule } from '../../node_modules/@angular/forms';
+import { LoginComponent } from './login/login.component';
 
 
 const appRoutes: Routes = [
-  { path: 'quiz', component: FirstPageComponent },
-  { path: 'inprogress', component: MainComponent },
-  { path: 'edit', component: EditComponent },
-  { path: '', redirectTo: '/quiz', pathMatch: 'full' }
+  { path: 'login', component: LoginComponent },
+  { path: 'quiz', component: FirstPageComponent, canActivate: [AuthGuard] },
+  { path: 'inprogress', component: MainComponent, canActivate: [AuthGuard] },
+  { path: 'edit', component: EditComponent, canActivate: [AuthGuard] },
+  { path: '', redirectTo: '/login', pathMatch: 'full' }
 ];
-
-
-
 
 @NgModule({
   declarations: [
@@ -36,7 +36,8 @@ const appRoutes: Routes = [
     FinalComponent,
     FirstPageComponent,
     WrongAnswerComponent,
-    EditComponent
+    EditComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +48,9 @@ const appRoutes: Routes = [
     MatInputModule,
     MatFormFieldModule,
     RouterModule.forRoot(appRoutes),
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    MatMenuModule
   ],
   providers: [QuestionService, Question],
   bootstrap: [AppComponent],
