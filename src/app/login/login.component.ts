@@ -1,10 +1,11 @@
+import { RegisterComponent } from './../register/register.component';
 import { AuthenticateService } from './../shared/authenticate.service';
 import { User } from './../shared/user';
 import { Component, OnInit } from '@angular/core';
-import { NgModel } from '@angular/forms';
 import { USERS_DB } from '../shared/usersDB';
 import { UserService } from '../user.service';
-import { RouterModule, Router } from '@angular/router';
+import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -14,9 +15,11 @@ export class LoginComponent implements OnInit {
 
   constructor(private userService: UserService,
               private router: Router,
-              private authenticate: AuthenticateService
+              private authenticate: AuthenticateService,
+              private popup: MatDialog
             ) { }
   public user = new User('', '');
+  public notInDatabase = false;
 
   ngOnInit() { }
 
@@ -27,9 +30,14 @@ export class LoginComponent implements OnInit {
         this.authenticate.setLoggedIn(user);
         this.router.navigate(['/quiz']);
       } else {
-        console.log('breach');
+        this.notInDatabase = true;
       }
     }
+}
+public registerUser() {
+  this.popup.open(RegisterComponent, {
+    width: '600px'
+  });
 }
 
 }

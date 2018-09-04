@@ -46,7 +46,6 @@ export class MainComponent implements OnInit {
   }
 
   private callCorrectAnswer(event) {
-    console.log(event);
     this.openSnackbar();
     event.target.classList.add('true');
     this.cashAmount += (this.currentQuestionIndex + 1) * 50;

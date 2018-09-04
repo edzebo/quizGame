@@ -8,18 +8,21 @@
       <form class="form" #myForm="ngForm">
         <div class="row">
           <mat-form-field class="form-field">
-            <input matInput type="text" placeholder="Enter your user name:" name="username" [(ngModel)]="user.username">
+            <input matInput required type="text" placeholder="Enter your user name:" name="username" [(ngModel)]="user.username">
           </mat-form-field>
         </div>
         <div class="row">
           <mat-form-field class="form-field">
-            <input matInput placeholder="Enter your password:" name="password" type="password" [(ngModel)]="user.password" >
+            <input matInput required placeholder="Enter your password:" name="password" type="password" [(ngModel)]="user.password">
           </mat-form-field>
+          <div *ngIf="notInDatabase">
+          <p class="warning"> Username and/or password are incorect. Please try again or register first.</p>
+          </div>
         </div>
-        <button mat-raised-button color="primary" id="big" (click)="checkForUser(user)" >Login</button>
+        <button mat-raised-button color="primary" class="big" (click)="checkForUser(user)">Login</button>
+        <h2><span> OR </span></h2>
+        <button mat-raised-button color="primary" class="big" (click)="registerUser()">Register</button>
       </form>
     </div>
   </mat-card-content>
 </mat-card>
-{{user.username}}
-{{user.password}}

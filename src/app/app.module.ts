@@ -18,6 +18,7 @@ import { EditComponent } from './edit/edit.component';
 import { MatFormFieldModule, MatFormField, MatInputModule, MatMenuModule } from '../../node_modules/@angular/material';
 import { FormsModule, ReactiveFormsModule } from '../../node_modules/@angular/forms';
 import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 
 const appRoutes: Routes = [
@@ -37,7 +38,8 @@ const appRoutes: Routes = [
     FirstPageComponent,
     WrongAnswerComponent,
     EditComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -54,6 +56,6 @@ const appRoutes: Routes = [
   ],
   providers: [QuestionService, Question],
   bootstrap: [AppComponent],
-  entryComponents: [WrongAnswerComponent, FinalComponent]
+  entryComponents: [WrongAnswerComponent, FinalComponent, RegisterComponent]
 })
 export class AppModule { }
